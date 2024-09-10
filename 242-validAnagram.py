@@ -46,3 +46,44 @@ class Solution(object):
 
 # and the output will be:
 # Counter({'a': 3, 'n': 1, 'g': 1, 'r': 1, 'm': 1})
+
+
+# using hash map
+# Time complexity: O(n)
+# Space complexity: O(1)
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        hash_map = {}
+
+        if len(s) != len(t):
+            return False
+
+        for c in s:
+            if c in hash_map:
+                hash_map[c] += 1
+            else:
+                hash_map[c] = 1
+        
+        for ch in t:
+            if ch in hash_map:
+                hash_map[ch] -= 1
+
+                if hash_map[ch] == 0:
+                    del hash_map[ch]
+            
+        return True if len(hash_map) == 0 else False
+    
+
+    # using hash map
+    # cleaner version
+    class Solution:
+        def isAnagram(self, s: str, t: str) -> bool:
+            if len(s) != len(t):
+                return False
+
+            countS, countT = {}, {}
+
+            for i in range(len(s)):
+                countS[s[i]] = 1 + countS.get(s[i], 0)
+                countT[t[i]] = 1 + countT.get(t[i], 0)
+            return countS == countT

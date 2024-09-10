@@ -58,3 +58,8 @@ class Solution(object):
         # Space complexity: O(n)
         
         return True if len(set(nums)) != len(nums) else False
+    
+    # Creating a set from the list: The set(nums) operation iterates through each element in the list nums and adds it to the set. in Python
+    # adding an element to a set is an average O(1) operation. So for n elements, creating the set takes O(n) time.
+
+    # comparing lengths: The len(nums) and len(set(nums)) both take O(1) time because retrieving the length of a list or set is a constant time operation.

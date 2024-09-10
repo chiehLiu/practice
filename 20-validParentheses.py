@@ -30,3 +30,39 @@ class Solution(object):
                 return False
         
         return len(stack) == 0
+    
+
+
+    class Solution:
+        def isValid(self, s: str) -> bool:
+            if len(s) % 2 != 0:
+                return False
+            
+            hash_map = {
+                "}": "{",
+                ")": "(",
+                "]": "["
+            }
+
+            stack = []
+
+            for p in s:
+                # meet the closing tag
+                if p in hash_map:
+
+                    # this is no opening tag only closing tag in the input
+                    if not stack and hash_map[p]:
+                        return False
+                    # this is something already in the stack and the latest closing tag does not matching the opening tag at the end of the stack
+                    if stack and stack[-1] != hash_map[p]:
+                        return False
+                    
+                    # something in the stack and the closing tag matched the opening at the end of the stack
+                    if stack and stack[-1] == hash_map[p]:
+                        stack.pop()
+
+                # for opening tag pushing to stack
+                else:
+                    stack.append(p)
+            
+            return len(stack) == 0

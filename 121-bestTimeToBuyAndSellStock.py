@@ -9,6 +9,10 @@ class Solution(object):
         # Iterate through the list of prices
         # Update the minimum price and the maximum profit
 
+        # if you don't remember the solution, you can draw a x, y axis, x is the days, y is the price
+        # keep track of the minimum price
+        # and since the days iterate through the price list, the maximum profit is the maximum difference between the current price and the minimum price
+
         # Time complexity: O(n)
         # Space complexity: O(1)
         
