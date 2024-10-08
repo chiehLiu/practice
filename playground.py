@@ -21,5 +21,19 @@ from collections import defaultdict
 #   print(sorted(word))
   # print(''.join(sorted(word)))
 
+# if you put a number
+# it would print from 0 to the number - 1
 for i in range(9):
     print(i) # 0 1 2 3 4 5 6 7 8
+
+
+# it would print the index of the string
+# s = "abcde"
+for c in range(len(s)):
+    print(c) # 0 1 2 3 4
+
+
+# this is how you iterate all the elements
+# s = "abc"
+for c in range(s):
+    print(c) # a b c
