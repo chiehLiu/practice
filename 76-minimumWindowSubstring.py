@@ -4,11 +4,13 @@ class Solution:
             return ""
         
         # Initialize the answer window and the count of characters in t
-        window, countT = {}, {}
+        window, countT = {}, {} # can use defaultdict(int) instead of {}
 
         # Count the characters in t and fill in the countT dictionary
         for c in t:
-            countT[c] = countT.get(c, 0) + 1
+            # if using defaultdict, this line is not needed
+            # can change into countT[c] += 1
+            countT[c] = countT.get(c, 0) + 1 
         
         # have is the number of characters in the window that can be used to form t
         # need is the number of characters needed to form t
@@ -21,6 +23,7 @@ class Solution:
             # extract c from the s string
             c = s[r]
             # update the window key is c and value is the count of c in the window
+            # if using defaultdict can change into window[c] += 1
             window[c] = window.get(c, 0) + 1
 
             if c in countT and window[c] == countT[c]:
