@@ -15,6 +15,7 @@ class Solution:
             # if the current ele(num[r]) is less than the last ele in the queue, add it to the queue
             q.append(r)
 
+            # this step is important, if there is an very big number at the front of the queue, we can't remove it by the above steps
             if l > q[0]:
                 q.popleft()
             
