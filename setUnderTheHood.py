@@ -9,6 +9,8 @@ class MySet:
   def add(self, key):
     idx = self._hash(key)
     bucket = self.buckets[idx]
+
+    # this is the place where we check if the key is already in the bucket!
     if key not in bucket:
       bucket.append(key)
   
