@@ -4,6 +4,8 @@ class MySet:
     self.buckets = [[] for _ in range(size)]
   
   def _hash(self, key):
+    # hash is a build-in funciton in Python that returns a hash value of an object
+    # and we use modulo to ensure the index is within the bounds of the buckets
     return hash(key) % self.size
   
   def add(self, key):
@@ -18,7 +20,7 @@ class MySet:
     idx = self._hash(key)
     return key in self.buckets[idx]
   
-  def remove(self, key):
+  def remove_key(self, key):
     idx = self._hash(key)
     bucket = self.buckets[idx]
     if key in bucket:
@@ -30,5 +32,5 @@ s.add(1)
 s.add(2)
 print(s.contains(1))
 print(s.contains(3))
-s.remove(1)
+s.remove_key(1)
 print(s.contains(1))
