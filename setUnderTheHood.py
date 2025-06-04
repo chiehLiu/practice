@@ -23,6 +23,11 @@ class MySet:
   def remove_key(self, key):
     idx = self._hash(key)
     bucket = self.buckets[idx]
+
+    # the remove method is build-in in Python
+    # it removes the first occurrence of the value in the list
+    # if the value is not found, it raises a ValueError
+    # so we check if the key is in the bucket before removing it
     if key in bucket:
       bucket.remove(key)
   
