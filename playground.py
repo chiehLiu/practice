@@ -37,3 +37,8 @@ for c in range(len(s)):
 # s = "abc"
 for c in range(s):
     print(c) # a b c
+
+# reverse the string
+s = "abcde"
+for c in range(len(s) - 1, -1, -1):
+    print(c) # 4 3 2 1 0

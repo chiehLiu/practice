@@ -53,7 +53,7 @@ class Solution:
             # j + 1 is the start of the string since the str like this "4#neet4#code"
             i = j + 1
 
-            # i + length is the next start of the string, but we using : to slice the str so we ignore the last index
+            # i + length is the next start of the string, so we use ":" to slice the str so we ignore the last index
             j = i + length
 
             # we got the start and end of the string, so we can extract the string
@@ -66,3 +66,37 @@ class Solution:
     # s = "hello"
     # print(s[1:4])  # Output: 'ell'
     # index 1 is inclusive, index 4 doesn't.
+
+
+    # this is my method using two pointers
+    class Solution:
+
+    def encode(self, strs: List[str]) -> str:
+        res = ""
+
+        for s in strs:
+            res += str(len(s)) + '#' + s
+        
+        return res
+
+    def decode(self, s: str) -> List[str]:
+        res = []
+        l, r = 0, 0
+
+        while r < len(s):
+            while s[r] != "#":
+                r += 1
+            
+            length = int(s[l:r])
+
+            l = r + 1
+
+            r = l + length
+
+            res.append(s[l:r])
+
+            l = r
+        
+        return res
+                
+        
