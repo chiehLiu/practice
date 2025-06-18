@@ -22,3 +22,23 @@ class Solution:
             postfix *= nums[i]
         
         return res
+
+# O(n ^ 2) time complexity, and O(n) space complexity...
+# if you can't come up with a solution..., it's better than nothing...
+class Solution(object):
+    def productExceptSelf(self, nums):
+        i = 0
+        res = []
+
+        def timesItSelf(product):
+            a = 1
+            for n in product:
+                a *= n
+            return a
+        
+        for i, n in enumerate(nums):
+            copy = nums[:]
+            copy.pop(i)
+            res.append(timesItSelf(copy))
+
+        return res
