@@ -42,3 +42,29 @@ class Solution(object):
             res.append(timesItSelf(copy))
 
         return res
+
+
+# I came up with this solution after watch the solution vedio, and looks great!
+class Solution(object):
+    def productExceptSelf(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        
+        res = []
+        pre = 1
+
+        for i in range(len(nums)):
+            # the reason I can't using res[i]*= pre is the res list was not initialized, it was still empty at that time
+            # so in order to use *= you use res = [1] * len(nums) at first to initialize it, and then it would worked!
+            res.append(pre)
+            pre *= nums[i]
+        
+        post = 1
+
+        for i in range(len(nums) - 1, -1, -1):
+            res[i] *= post
+            post *= nums[i]
+        
+        return res
