@@ -50,3 +50,53 @@ class Solution:
 
     def alphaNum(self, c):
         return (ord('A') <= ord(c) <= ord('Z')) or (ord('a') <= ord(c) <= ord('z')) or (ord('0') <= ord(c) <= ord('9'))
+    
+
+
+# mose recent way to solve the problem
+# Time complexity: O(n)
+# Space complexity: O(n) because we are creating a new string
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+        clean_s = "".join(char for char in s if char.isalnum()).lower()
+        
+        l, r = 0, len(clean_s) - 1
+
+
+        while l < r:
+            if clean_s[l] != clean_s[r]:
+                return False
+
+            if clean_s[l] == clean_s[r]:
+                l += 1
+                r -= 1
+                continue
+        
+        return True
+        
+
+
+# Time complexity: O(n)
+# Space complexity: O(1) because we are not creating a new string
+# we are using original string to compare the characters
+# This is the most efficient way to solve the problem
+class Solution:
+    def isPalindrome(self, s):
+        l, r = 0, len(s) - 1
+        while l < r:
+
+            # the inner while loops are nessessary here to prevent the index from going out of bounds
+            while l < r and not s[l].isalnum():
+                l += 1
+            while l < r and not s[r].isalnum():
+                r -= 1
+            if s[l].lower() != s[r].lower():
+                return False
+            l += 1
+            r -= 1
+        return True
